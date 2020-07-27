@@ -10,7 +10,7 @@ Finally, we can produce the same set of plots but instead look at the daily new 
 
 ## Python Implementation
 
-To use the python implementation, either install all necessary packages listed in `env.yaml` or use `conda` to create an environment from this definition file with the command:
+The pure python implementation of this example resides in the `python` directory. Either install all necessary packages listed in `env.yaml` or use `conda` to create an environment from this definition file with the command:
 
 ```
 conda env create -f ./env.yaml -p ./venv
@@ -20,4 +20,16 @@ We've also included a fully realized environment which was used to develop and t
 
 ## C3 Implementation
 
-Coming Soon...
+The C3 implementation of this example is in the directory `c3-python-connector`. Make sure you have access to a C3 tag which has the Datalake package provisioned either directly, or as a dependency of your current package. To ensure your python environment has everything needed, we recommend provisioning a conda environment with
+
+```
+conda env create -f ./env.yaml -p ./venv
+```
+
+After which you can launch jupyter notebook, and open the notebook `casesExample.ipynb`.
+
+When running the jupyter notebook, there's a cell at the top meant to connect to a running C3 tag. If you're running python/jupyter 'remotely' that is not through C3's system, you will need to replace the `<vanity_url>`, `<tenant>`, and `<tag>` in the cell negotiating the connection to C3. It should look like this:
+
+```
+c3 = get_c3('<vanity_url>', '<tenant>', '<tag>')
+```
